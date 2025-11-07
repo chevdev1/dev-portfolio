@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="ru" class="h-full">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Креатив — Разработка под ключ</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Наши анимации -->
+    <link rel="stylesheet" href="css/animations.css">
+  </head>
+  <body class="h-full bg-neutral-950 text-white antialiased" style="font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;">
+    <!-- Background -->
+    <div class="fixed inset-0 -z-10 overflow-hidden">
+      <div class="absolute inset-0 bg-[radial-gradient(60%_60%_at_20%_10%,rgba(251,191,36,0.25),transparent_60%)]"></div>
+      <div class="absolute inset-0 bg-[radial-gradient(50%_50%_at_80%_70%,rgba(251,191,36,0.25),transparent_60%)]"></div>
+      <img
+        src="https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=1800&auto=format&fit=crop"
+        alt=""
+        class="absolute -right-20 -bottom-40 w-[900px] opacity-10 blur-3xl select-none pointer-events-none"
+      />
+    </div>
+
+    <!-- Page -->
+    <header class="max-w-7xl mx-auto px-6 pt-6">
+      <div class="flex items-center justify-between">
+        <div class="flex items-center gap-3">
+          <div id="rocket-container" class="relative">
+            <div id="rocket-btn" class="h-8 w-8 rounded-lg bg-white/5 ring-1 ring-white/10 flex items-center justify-center cursor-pointer hover:bg-white/10 transition-all duration-300 group">
+              <i data-lucide="rocket" class="h-4 w-4 text-white/80 group-hover:text-amber-400 transition-colors rocket-icon"></i>
+            </div>
+            
+            <!-- Пасхалка с предложением -->
+            <div id="easter-egg" class="hidden absolute top-12 left-0 z-50 p-4 bg-gradient-to-r from-emerald-500 to-emerald-600 rounded-xl shadow-2xl ring-1 ring-white/20 min-w-[280px] sm:min-w-[320px]">
+              <div class="text-center">
+                <div class="mb-2 flex items-center justify-center gap-2">
+                  <i data-lucide="sparkles" class="h-5 w-5 text-white animate-pulse"></i>
+                  <span class="text-white font-semibold text-sm" data-translate="easter-title">Готовы к старту?</span>
+                  <i data-lucide="sparkles" class="h-5 w-5 text-white animate-pulse"></i>
+                </div>
+                <div class="space-y-2">
+                  <p class="text-white text-lg font-bold" data-translate="easter-discount">40% скидка на первый заказ!</p>
+                  <p class="text-white/90 text-xs" data-translate="easter-guarantee">+ Гарантия на проект 1 месяц</p>
+                </div>
+                <div class="mt-3 flex items-center justify-center gap-3">
+                  <button id="easter-close" class="text-white/70 hover:text-white text-xs transition">
+                    <i data-lucide="x" class="h-4 w-4"></i>
+                  </button>
+                  <a href="#brief" class="inline-flex items-center gap-1 bg-white/20 hover:bg-white/30 px-3 py-1.5 rounded-lg text-white text-xs font-medium transition">
+                    <i data-lucide="arrow-right" class="h-3 w-3"></i>
+                    <span data-translate="easter-action">Заказать</span>
+                  </a>
+                </div>
+              </div>
+              <!-- Треугольник указатель -->
+              <div class="absolute -top-2 left-4 w-4 h-4 bg-emerald-500 rotate-45 ring-1 ring-white/20"></div>
+            </div>
+          </div>
+          <span class="text-sm md:text-base font-medium text-white/90 tracking-tight">telegram:@chevdev1</span>
+        </div>
+        
+        <!-- Language Switcher -->
+        <div class="flex items-center gap-4">
+          <div class="flex items-center gap-2">
+            <i data-lucide="globe" class="h-4 w-4 text-white/60"></i>
+            <div class="flex items-center bg-white/5 ring-1 ring-white/10 rounded-lg p-1">
+              <button id="lang-ru" class="language-btn active px-3 py-1.5 text-xs font-medium tracking-tight rounded-md transition-all" data-lang="ru">
+                RU
+              </button>
+              <button id="lang-uk" class="language-btn px-3 py-1.5 text-xs font-medium tracking-tight rounded-md transition-all" data-lang="uk">
+                UA
+              </button>
+            </div>
+          </div>
+          
+          <div class="hidden sm:flex items-center gap-6 text-sm text-white/70">
+            <a href="#work" class="hover:text-white transition" data-translate="nav-projects">Проекты</a>
+            <a href="#" class="hover:text-white transition" data-translate="nav-services">Услуги</a>
+            <a href="#brief" class="hover:text-white transition" data-translate="nav-contacts">Контакты</a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Hero Creative -->
+    <main class="max-w-7xl mx-auto px-6 pb-16 pt-10 md:pt-14">
+      <section class="relative overflow-hidden rounded-3xl bg-neutral-900/60 ring-1 ring-white/10">
+        <!-- Glow -->
+        <div class="absolute -top-24 -left-24 h-72 w-72 rounded-full bg-amber-500/30 blur-3xl"></div>
+        <div class="absolute -bottom-24 -right-16 h-80 w-80 rounded-full bg-amber-600/30 blur-3xl"></div>
+
+        <div class="relative grid md:grid-cols-2 gap-8 p-6 sm:p-10 lg:p-14">
+          <!-- Left: Text -->
+          <div class="flex flex-col justify-center">
+            <div class="inline-flex items-center gap-2 rounded-full border border-white/15 px-3 py-1.5 w-max bg-white/5 animate-fade-in">
+              <span class="inline-block h-2 w-2 rounded-full bg-amber-500 shadow-[0_0_0_3px_rgba(245,158,11,0.25)] pulse"></span>
+              <span class="text-xs font-medium tracking-tight text-white/80" data-translate="badge-turnkey">ПОД КЛЮЧ</span>
+            </div>
+
+            <h1 class="mt-4 text-4xl sm:text-5xl lg:text-6xl font-semibold tracking-tight leading-tight animate-fade-in animate-delay-200" data-translate="main-heading">
+              Разработка, которая двигает бизнес
+            </h1>
+
+            <p class="mt-4 text-base sm:text-lg text-white/70 animate-fade-in animate-delay-400" data-translate="main-description">
+              Лендинги, веб‑приложения, интеграции и автоматизация. От идеи до запуска — дизайн, код, аналитика и поддержка.
+            </p>
+
+            <div class="mt-6 flex flex-wrap items-center gap-4 animate-fade-in animate-delay-500">
+              <a href="#brief" class="inline-flex items-center gap-2 rounded-xl bg-gradient-to-b from-amber-500 to-amber-600 px-5 py-3 text-sm font-medium tracking-tight text-white shadow-[0_10px_30px_rgba(245,158,11,0.45)] hover:brightness-110 transition btn-hover-effect glow-effect">
+                <i data-lucide="mouse-pointer-click" class="h-4 w-4"></i>
+                <span data-translate="btn-request">Оставить заявку</span>
+              </a>
+              <a href="#work" class="inline-flex items-center gap-2 rounded-xl bg-white/5 px-5 py-3 text-sm font-medium tracking-tight text-white/90 ring-1 ring-white/10 hover:bg-white/10 transition btn-hover-effect">
+                <i data-lucide="sparkles" class="h-4 w-4"></i>
+                <span data-translate="btn-show-work">Показать работы</span>
+              </a>
+            </div>
+
+            <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm animate-fade-in animate-delay-600">
+              <div class="flex items-center gap-2 text-white/80">
+                <i data-lucide="check" class="h-4 w-4 text-emerald-400"></i>
+                <span data-translate="advantage-1">Сроки от 7 дней</span>
+              </div>
+              <div class="flex items-center gap-2 text-white/80">
+                <i data-lucide="check" class="h-4 w-4 text-emerald-400"></i>
+                <span data-translate="advantage-2">Фиксированная стоимость</span>
+              </div>
+              <div class="flex items-center gap-2 text-white/80">
+                <i data-lucide="check" class="h-4 w-4 text-emerald-400"></i>
+                <span data-translate="advantage-3">Под ключ: UX → Dev → Авто</span>
+              </div>
+              <div class="flex items-center gap-2 text-white/80">
+                <i data-lucide="check" class="h-4 w-4 text-emerald-400"></i>
+                <span data-translate="advantage-4">Поддержка и рост</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right: Floating Tiles -->
+          <div class="relative min-h-[320px] md:min-h-[480px] animate-fade-in animate-delay-700">
+            <!-- backdrop frame -->
+            <div class="absolute inset-6 rounded-3xl bg-gradient-to-b from-white/5 to-transparent ring-1 ring-white/10 animate-fade-in animate-delay-800"></div>
+
+            <!-- Tile: Web -->
+            <div class="absolute left-0 top-10 sm:top-14 translate-x-2 rotate-[-6deg] floating will-change-transform hardware-acceleration">
+              <div class="relative h-36 w-36 sm:h-44 sm:w-44 rounded-3xl bg-gradient-to-b from-neutral-800 to-neutral-950 shadow-2xl ring-1 ring-white/10 flex items-center justify-center smooth-transition hover:ring-white/20 hero-tile" data-tile="0">
+                <div class="absolute inset-0 rounded-3xl shadow-[inset_0_-30px_60px_rgba(0,0,0,0.5)]"></div>
+                <i data-lucide="code-2" class="tile-icon h-9 w-9 text-white/90 transition-transform hover:scale-110"></i>
+                <span class="absolute bottom-3 left-4 text-white/90 text-sm font-medium tracking-tight">Web</span>
+              </div>
+            </div>
+
+            <!-- Arrow -->
+            <div class="absolute left-36 sm:left-44 top-24 sm:top-28 arrow-pulse will-change-transform">
+              <i data-lucide="arrow-right" class="h-8 w-8 text-yellow-400 drop-shadow-[0_8px_22px_rgba(250,204,21,0.45)]"></i>
+            </div>
+
+            <!-- Tile: App -->
+            <div class="absolute right-2 sm:right-6 top-4 sm:top-10 rotate-[8deg] floating-delayed will-change-transform hardware-acceleration">
+              <div class="relative h-36 w-36 sm:h-44 sm:w-44 rounded-3xl bg-gradient-to-b from-amber-500 to-amber-600 shadow-2xl ring-1 ring-white/10 flex items-center justify-center smooth-transition hover:ring-white/20 hero-tile glow-effect" data-tile="1">
+                <div class="absolute inset-0 rounded-3xl shadow-[inset_0_-30px_60px_rgba(0,0,0,0.25)]"></div>
+                <i data-lucide="smartphone" class="tile-icon h-9 w-9 text-white transition-transform hover:scale-110"></i>
+                <span class="absolute bottom-3 left-4 text-white text-sm font-medium tracking-tight">App</span>
+              </div>
+            </div>
+
+            <!-- Tile: Automation -->
+            <div class="absolute -bottom-4 sm:-bottom-2 left-14 sm:left-24 rotate-[-2deg] floating-slow will-change-transform hardware-acceleration">
+              <div class="relative h-40 w-40 sm:h-48 sm:w-48 rounded-3xl bg-gradient-to-b from-neutral-900 to-neutral-950 shadow-2xl ring-1 ring-white/10 flex items-center justify-center smooth-transition hover:ring-white/20 hero-tile" data-tile="2">
+                <div class="absolute inset-0 rounded-3xl shadow-[inset_0_-30px_60px_rgba(0,0,0,0.5)]"></div>
+                <i data-lucide="workflow" class="tile-icon h-9 w-9 text-white/90 transition-transform hover:scale-110"></i>
+                <span class="absolute bottom-3 left-4 text-white/90 text-sm font-medium tracking-tight">Automation</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bottom CTA Bar (like promo stripe) -->
+        <div class="border-t border-white/10 px-6 sm:px-10 lg:px-14 py-5 bg-gradient-to-r from-white/0 via-white/0 to-white/0">
+          <div class="flex flex-col sm:flex-row items-center gap-4 justify-between">
+            <div class="flex items-center gap-3 text-sm text-white/80">
+              <img
+                src="img/avatar.png"
+                alt="Разработчик"
+                class="h-9 w-9 rounded-full object-cover ring-1 ring-white/10"
+              />
+              <p class="leading-tight">
+                <span class="block font-medium tracking-tight text-white/90">Свободен слот на этот месяц</span>
+                <span class="block text-white/60">Успейте забронировать старт — ответ в течение дня</span>
+              </p>
+            </div>
+            <div class="flex items-center gap-3">
+              <a href="#brief" class="group inline-flex items-center gap-2 rounded-xl bg-gradient-to-b from-amber-500 to-amber-600 px-5 py-3 text-sm font-medium tracking-tight text-white shadow-[0_10px_30px_rgba(245,158,11,0.45)] hover:brightness-110 transition">
+                Подать заявку
+                <i data-lucide="chevron-right" class="h-4 w-4 transition-transform group-hover:translate-x-0.5"></i>
+              </a>
+              <a href="https://t.me/chevdev1" target="_blank" rel="noopener noreferrer" class="group inline-flex items-center gap-2 rounded-xl bg-blue-600 hover:bg-blue-700 px-5 py-3 text-sm font-medium tracking-tight text-white ring-1 ring-blue-500/50 hover:ring-blue-400/50 transition-all duration-200 shadow-lg hover:shadow-blue-500/25 btn-hover-effect btn-telegram smooth-transition">
+                <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M12 0C5.374 0 0 5.373 0 12s5.374 12 12 12 12-5.373 12-12S18.626 0 12 0zm5.568 8.16c-.18 1.896-.962 6.502-1.359 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
+                </svg>
+                <span data-translate="btn-telegram">Связаться с кодером</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Quick Services -->
+      <section id="work" class="mt-10 grid sm:grid-cols-3 gap-4">
+        <div class="rounded-2xl bg-white/5 ring-1 ring-white/10 p-4 service-card smooth-transition hover:bg-white/10 hover:ring-white/20">
+          <div class="flex items-center gap-3">
+            <div class="h-9 w-9 rounded-lg bg-amber-500/20 flex items-center justify-center pulse">
+              <i data-lucide="layout" class="h-4 w-4 text-amber-400"></i>
+            </div>
+            <div>
+              <h3 class="text-base font-medium tracking-tight">Лендинги</h3>
+              <p class="text-sm text-white/60">Конверсия и скорость</p>
+            </div>
+          </div>
+        </div>
+        <div class="rounded-2xl bg-white/5 ring-1 ring-white/10 p-4 service-card smooth-transition hover:bg-white/10 hover:ring-white/20">
+          <div class="flex items-center gap-3">
+            <div class="h-9 w-9 rounded-lg bg-amber-500/20 flex items-center justify-center pulse">
+              <i data-lucide="boxes" class="h-4 w-4 text-amber-400"></i>
+            </div>
+            <div>
+              <h3 class="text-base font-medium tracking-tight">Приложения</h3>
+              <p class="text-sm text-white/60">SPA, SSR, панели</p>
+            </div>
+          </div>
+        </div>
+        <div class="rounded-2xl bg-white/5 ring-1 ring-white/10 p-4 service-card smooth-transition hover:bg-white/10 hover:ring-white/20">
+          <div class="flex items-center gap-3">
+            <div class="h-9 w-9 rounded-lg bg-amber-500/20 flex items-center justify-center pulse">
+              <i data-lucide="plug" class="h-4 w-4 text-amber-400"></i>
+            </div>
+            <div>
+              <h3 class="text-base font-medium tracking-tight">Автоматизация</h3>
+              <p class="text-sm text-white/60">Интеграции и сценарии</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Почему именно мы + Наши работы -->
+      <section class="mt-16">
+        <!-- Заголовок секции -->
+        <div class="text-center mb-12">
+          <h2 class="text-3xl sm:text-4xl font-semibold tracking-tight text-white mb-6" data-translate="why-us-heading">
+            Почему именно мы
+          </h2>
+          <div class="max-w-4xl mx-auto space-y-4 text-base sm:text-lg text-white/70 leading-relaxed">
+            <p data-translate="why-us-p1">
+              Наша команда разработчиков начала программировать задолго до того, как IT стало мейнстримом. Многолетний опыт позволил нам глубоко понять потребности клиентов и адаптироваться к изменениям рынка.
+            </p>
+            <p data-translate="why-us-p2">
+              Сегодня, в эпоху искусственного интеллекта, мы органично интегрируем передовые технологии и нейросети в процесс разработки. Это позволяет нам конкурировать с крупными IT-корпорациями по качеству, сохраняя при этом персональный подход и гибкость.
+            </p>
+            <p class="text-white/90 font-medium" data-translate="why-us-p3">
+              Убедитесь сами — наши проекты говорят за нас.
+            </p>
+          </div>
+        </div>
+
+        <!-- Галерея работ -->
+        <div class="rounded-3xl bg-neutral-900/60 ring-1 ring-white/10 p-6 sm:p-8">
+          <div class="flex items-center justify-between mb-6">
+            <h3 class="text-xl font-medium tracking-tight text-white">Наши работы</h3>
+            <div class="flex items-center gap-2">
+              <button id="prevProject" class="h-8 w-8 rounded-lg bg-white/5 ring-1 ring-white/10 flex items-center justify-center hover:bg-white/10 transition disabled:opacity-50">
+                <i data-lucide="chevron-left" class="h-4 w-4 text-white/70"></i>
+              </button>
+              <button id="nextProject" class="h-8 w-8 rounded-lg bg-white/5 ring-1 ring-white/10 flex items-center justify-center hover:bg-white/10 transition disabled:opacity-50">
+                <i data-lucide="chevron-right" class="h-4 w-4 text-white/70"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- Слайдер проектов -->
+          <div class="relative overflow-hidden rounded-2xl">
+            <div id="projectsSlider" class="flex transition-transform duration-500">
+              
+              <!-- Проект 1 - Dating Landing -->
+              <div class="min-w-full">
+                <div class="grid md:grid-cols-2 gap-6">
+                  <div class="relative group">
+                    <div class="aspect-[4/3] rounded-xl bg-gradient-to-br from-neutral-800 to-neutral-900 ring-1 ring-white/10 overflow-hidden">
+                      <!-- Фото проекта -->
+                      <img 
+                        src="img/projects/escort.png" 
+                        alt="Dating переходник для Telegram каналов"
+                        class="w-full h-full object-cover object-center"
+                      />
+                      <!-- Оверлей при наведении -->
+                      <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100">
+                        <div class="bg-white/10 backdrop-blur-sm rounded-lg px-4 py-2">
+                          <span class="text-white text-sm font-medium">Посмотреть проект</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div class="flex flex-col justify-center">
+                    <div class="inline-flex items-center gap-2 rounded-full border border-rose-500/20 px-3 py-1.5 w-max bg-rose-500/10 mb-4">
+                      <span class="inline-block h-2 w-2 rounded-full bg-rose-500"></span>
+                      <span class="text-xs font-medium tracking-tight text-rose-400">DATING LANDING</span>
+                    </div>
+                    
+                    <h4 class="text-xl sm:text-2xl font-semibold tracking-tight text-white mb-3">
+                      Dating переходник для Telegram
+                    </h4>
+                    
+                    <p class="text-white/70 mb-4 leading-relaxed">
+                      Эффективный переходник для dating проектов в Telegram каналах. Современный дизайн, высокая конверсия и грамотная реализация согласно ТЗ — все для того, чтобы радовать ваших лидов и повышать переходы.
+                    </p>
+                    
+                    <div class="flex flex-wrap gap-2 mb-4">
+                      <span class="px-2 py-1 bg-white/5 ring-1 ring-white/10 rounded-lg text-xs text-white/80">HTML5</span>
+                      <span class="px-2 py-1 bg-white/5 ring-1 ring-white/10 rounded-lg text-xs text-white/80">CSS3</span>
+                      <span class="px-2 py-1 bg-white/5 ring-1 ring-white/10 rounded-lg text-xs text-white/80">JavaScript</span>
+                      <span class="px-2 py-1 bg-white/5 ring-1 ring-white/10 rounded-lg text-xs text-white/80">Responsive</span>
+                    </div>
+                    
+                    <div class="flex items-center gap-4">
+                      <div class="flex items-center gap-2 text-emerald-400 text-sm">
+                        <i data-lucide="check-circle" class="h-4 w-4"></i>
+                        <span>Высокая конверсия</span>
+                      </div>
+                      <div class="flex items-center gap-2 text-blue-400 text-sm">
+                        <i data-lucide="zap" class="h-4 w-4"></i>
+                        <span>Быстрая загрузка</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Проект 2 - Ждем ваш следующий проект -->
+              <div class="min-w-full">
+                <div class="grid md:grid-cols-2 gap-6">
+                  <div class="relative group">
+                    <div class="aspect-[4/3] rounded-xl bg-gradient-to-br from-neutral-800 to-neutral-900 ring-1 ring-white/10 overflow-hidden">
+                      <!-- Заглушка для следующего проекта -->
+                      <div class="w-full h-full flex items-center justify-center bg-gradient-to-br from-amber-500/10 to-amber-600/10">
+                        <div class="text-center">
+                          <i data-lucide="plus-circle" class="h-16 w-16 text-amber-500/50 mx-auto mb-3"></i>
+                          <p class="text-white/60 text-sm mb-2">Следующий проект</p>
+                          <p class="text-white/40 text-xs">Скоро будет добавлен</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div class="flex flex-col justify-center">
+                    <div class="inline-flex items-center gap-2 rounded-full border border-amber-500/20 px-3 py-1.5 w-max bg-amber-500/10 mb-4">
+                      <span class="inline-block h-2 w-2 rounded-full bg-amber-500"></span>
+                      <span class="text-xs font-medium tracking-tight text-amber-400">СКОРО</span>
+                    </div>
+                    
+                    <h4 class="text-xl sm:text-2xl font-semibold tracking-tight text-white mb-3">
+                      Ваш следующий проект
+                    </h4>
+                    
+                    <p class="text-white/70 mb-4 leading-relaxed">
+                      Здесь будет размещен следующий проект из портфолио. Каждый проект — это уникальное решение, созданное с вниманием к деталям и потребностям клиента.
+                    </p>
+                    
+                    <div class="flex flex-wrap gap-2 mb-4">
+                      <span class="px-2 py-1 bg-white/5 ring-1 ring-white/10 rounded-lg text-xs text-white/80">В разработке</span>
+                      <span class="px-2 py-1 bg-white/5 ring-1 ring-white/10 rounded-lg text-xs text-white/80">Обновится</span>
+                      <span class="px-2 py-1 bg-white/5 ring-1 ring-white/10 rounded-lg text-xs text-white/80">Скоро</span>
+                    </div>
+                    
+                    <div class="flex items-center gap-4">
+                      <div class="flex items-center gap-2 text-amber-400 text-sm">
+                        <i data-lucide="clock" class="h-4 w-4"></i>
+                        <span>Ждите обновлений</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- Индикаторы слайдов -->
+          <div class="flex justify-center gap-2 mt-6">
+            <button class="project-indicator h-2 w-8 rounded-full bg-amber-500 transition-all" data-slide="0"></button>
+            <button class="project-indicator h-2 w-2 rounded-full bg-white/20 hover:bg-white/40 transition-all" data-slide="1"></button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Brief -->
+      <section id="brief" class="mt-10">
+        <div class="rounded-2xl bg-white/5 ring-1 ring-white/10 p-5 sm:p-6">
+          <h2 class="text-xl font-semibold tracking-tight text-white/90 mb-4" data-translate="form-heading">Оставить заявку</h2>
+          <form class="grid sm:grid-cols-2 gap-3">
+            <input type="text" name="name" placeholder="Имя" class="col-span-1 rounded-xl bg-black/40 px-4 py-3 text-sm text-white placeholder-white/40 ring-1 ring-white/10 focus:outline-none focus:ring-2 focus:ring-amber-500/60" required />
+            <input type="email" name="email" placeholder="Email" class="col-span-1 rounded-xl bg-black/40 px-4 py-3 text-sm text-white placeholder-white/40 ring-1 ring-white/10 focus:outline-none focus:ring-2 focus:ring-amber-500/60" required />
+            <input type="text" name="contact" placeholder="Телеграм (@username) или номер телефона" class="col-span-1 sm:col-span-2 rounded-xl bg-black/40 px-4 py-3 text-sm text-white placeholder-white/40 ring-1 ring-white/10 focus:outline-none focus:ring-2 focus:ring-amber-500/60" required />
+            <textarea name="task" placeholder="Опишите задачу или вставьте ссылку на ТЗ" rows="3" class="col-span-1 sm:col-span-2 rounded-xl bg-black/40 px-4 py-3 text-sm text-white placeholder-white/40 ring-1 ring-white/10 focus:outline-none focus:ring-2 focus:ring-amber-500/60 resize-none" required></textarea>
+            <button type="submit" class="sm:col-span-2 inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-b from-amber-500 to-amber-600 px-5 py-3 text-sm font-medium tracking-tight text-white shadow-[0_10px_30px_rgba(245,158,11,0.45)] hover:brightness-110 transition">
+              <span data-translate="form-submit">Отправить бриф</span>
+              <i data-lucide="send" class="h-4 w-4"></i>
+            </button>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <footer class="max-w-7xl mx-auto px-6 pb-10 text-xs text-white/50">
+      © 2025 — Разработка под ключ. Все права защищены.
+    </footer>
+
+    <!-- Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Система переводов -->
+    <script src="js/translations.js"></script>
+    <!-- Наш основной JavaScript -->
+    <script src="js/main.js"></script>
+  </body>
+</html>
