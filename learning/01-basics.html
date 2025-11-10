@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS Практика - Основы</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #1a1a1a;
+            color: #ffffff;
+        }
+        
+        .exercise {
+            background: #2a2a2a;
+            border-radius: 12px;
+            padding: 20px;
+            margin: 20px 0;
+            border-left: 4px solid #fbbf24;
+        }
+        
+        .result {
+            background: #0f172a;
+            border: 1px solid #334155;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 10px 0;
+            font-family: 'Courier New', monospace;
+        }
+        
+        button {
+            background: #fbbf24;
+            color: #000;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+        
+        button:hover {
+            background: #f59e0b;
+        }
+        
+        input {
+            background: #374151;
+            border: 1px solid #4b5563;
+            color: #fff;
+            padding: 8px 12px;
+            border-radius: 4px;
+            margin: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>🎯 JavaScript Практика - Урок 1: Основы</h1>
+
+    <!-- Упражнение 1: Переменные -->
+    <div class="exercise">
+        <h3>📝 Упражнение 1: Переменные и типы данных</h3>
+        <p>Изучаем как работают переменные, числа, строки и булевы значения</p>
+        <button onclick="exercise1()">Запустить</button>
+        <div class="result" id="result1">Нажми кнопку чтобы увидеть результат</div>
+    </div>
+
+    <!-- Упражнение 2: Функции -->
+    <div class="exercise">
+        <h3>⚙️ Упражнение 2: Функции</h3>
+        <p>Создаём функции и изучаем как они работают</p>
+        <button onclick="exercise2()">Запустить</button>
+        <div class="result" id="result2">Нажми кнопку чтобы увидеть результат</div>
+    </div>
+
+    <!-- Упражнение 3: Массивы -->
+    <div class="exercise">
+        <h3>📋 Упражнение 3: Массивы</h3>
+        <p>Работаем с массивами и циклами</p>
+        <button onclick="exercise3()">Запустить</button>
+        <div class="result" id="result3">Нажми кнопку чтобы увидеть результат</div>
+    </div>
+
+    <!-- Упражнение 4: Объекты -->
+    <div class="exercise">
+        <h3>🏗️ Упражнение 4: Объекты</h3>
+        <p>Изучаем объекты и их свойства</p>
+        <button onclick="exercise4()">Запустить</button>
+        <div class="result" id="result4">Нажми кнопку чтобы увидеть результат</div>
+    </div>
+
+    <!-- Интерактивное упражнение -->
+    <div class="exercise">
+        <h3>🎮 Интерактивное упражнение: Простой калькулятор</h3>
+        <p>Введи два числа и выбери операцию:</p>
+        <input type="number" id="num1" placeholder="Первое число">
+        <input type="number" id="num2" placeholder="Второе число">
+        <br><br>
+        <button onclick="calculate('+')" style="margin: 5px;">+</button>
+        <button onclick="calculate('-')" style="margin: 5px;">−</button>
+        <button onclick="calculate('*')" style="margin: 5px;">×</button>
+        <button onclick="calculate('/')" style="margin: 5px;">÷</button>
+        <div class="result" id="calc-result">Результат появится здесь</div>
+    </div>
+
+    <script src="js-basics.js"></script>
+</body>
+</html>

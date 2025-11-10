@@ -583,3 +583,56 @@
     left: -100px;
   }
 }
+
+/* =================================
+   АНИМАЦИИ УВЕДОМЛЕНИЙ
+   ================================= */
+
+/* Плавное появление уведомления */
+@keyframes fadeInNotification {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px) scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Плавное исчезновение уведомления */
+@keyframes fadeOutNotification {
+  0% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-20px) scale(0.95);
+  }
+}
+
+/* Классы для анимации */
+.animate-fadeIn {
+  animation: fadeInNotification 0.5s ease-out forwards;
+}
+
+.animate-fadeOut {
+  animation: fadeOutNotification 0.5s ease-out forwards;
+}
+
+/* Пульсация иконки чекмарка */
+@keyframes pulse-green {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.05);
+  }
+}
+
+#success-notification i[data-lucide="check-circle"] {
+  animation: pulse-green 2s ease-in-out infinite;
+}

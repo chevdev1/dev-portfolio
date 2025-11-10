@@ -1,0 +1,13 @@
+{
+  "recommendations": [
+    "ms-vscode.live-server",
+    "xabikos.JavaScriptSnippets", 
+    "bradlc.vscode-tailwindcss",
+    "ms-vscode.vscode-json",
+    "esbenp.prettier-vscode",
+    "ms-vscode.js-debug",
+    "formulahendry.auto-rename-tag",
+    "ms-vscode.vscode-js-profile-flame",
+    "WallabyJs.console-ninja"
+  ]
+}

@@ -780,10 +780,35 @@ function showFormSuccess(form, btnText, btnIcon, originalText) {
   // Показываем успех БЕЗ иконок (временно)
   if (btnText) btnText.textContent = 'Отправлено! ✅';
   
-  // Очищаем форму
-  if (form) form.reset();
+  // Показываем красивое уведомление
+  const notification = document.getElementById('success-notification');
+  if (notification) {
+    notification.classList.remove('hidden');
+    notification.classList.add('animate-fadeIn');
+    
+    // Прокручиваем к уведомлению
+    notification.scrollIntoView({ 
+      behavior: 'smooth', 
+      block: 'center' 
+    });
+  }
   
-  // Можно добавить уведомление
+  // Очищаем форму через небольшую задержку
+  setTimeout(() => {
+    if (form) form.reset();
+  }, 1000);
+  
+  // Скрываем уведомление через 10 секунд
+  setTimeout(() => {
+    if (notification) {
+      notification.classList.add('animate-fadeOut');
+      setTimeout(() => {
+        notification.classList.add('hidden');
+        notification.classList.remove('animate-fadeIn', 'animate-fadeOut');
+      }, 500);
+    }
+  }, 10000);
+  
   console.log('🎉 Заявка успешно отправлена! Скоро с вами свяжутся.');
 }
 
