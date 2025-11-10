@@ -708,15 +708,23 @@ async function handleFormspreeSubmit(event) {
   const form = event.target;
   const submitBtn = form.querySelector('button[type="submit"]');
   const btnText = submitBtn.querySelector('span');
-  const btnIcon = submitBtn.querySelector('i');
+  const btnIcon = submitBtn.querySelector('i[data-lucide]');
+  
+  // Проверяем что все элементы найдены
+  if (!submitBtn || !btnText) {
+    console.error('❌ Не найдены элементы кнопки отправки');
+    return;
+  }
   
   // Сохраняем оригинальный текст
   const originalText = btnText.textContent;
   
   // Показываем загрузку
   btnText.textContent = 'Отправляется...';
-  btnIcon.setAttribute('data-lucide', 'loader-2');
-  btnIcon.classList.add('animate-spin');
+  if (btnIcon) {
+    btnIcon.setAttribute('data-lucide', 'loader-2');
+    btnIcon.classList.add('animate-spin');
+  }
   submitBtn.disabled = true;
   
   try {
@@ -758,13 +766,15 @@ async function handleFormspreeSubmit(event) {
   
   // Принудительно возвращаем кнопку в норму через 3 секунды
   setTimeout(() => {
-    submitBtn.disabled = false;
-    if (btnText.textContent === 'Отправляется...') {
+    if (submitBtn) submitBtn.disabled = false;
+    if (btnText && btnText.textContent === 'Отправляется...') {
       // Если кнопка всё ещё в состоянии загрузки - сбрасываем
       btnText.textContent = originalText;
-      btnIcon.setAttribute('data-lucide', 'send');
-      btnIcon.classList.remove('animate-spin');
-      lucide.createIcons();
+      if (btnIcon) {
+        btnIcon.setAttribute('data-lucide', 'send');
+        btnIcon.classList.remove('animate-spin');
+        lucide.createIcons();
+      }
       console.log('⚠️ Принудительно сброшено состояние формы');
     }
     btnText.textContent = originalText;
@@ -776,10 +786,12 @@ async function handleFormspreeSubmit(event) {
 
 function showFormSuccess(form, btnText, btnIcon, originalText) {
   // Показываем успех
-  btnText.textContent = 'Отправлено!';
-  btnIcon.setAttribute('data-lucide', 'check');
-  btnIcon.classList.remove('animate-spin');
-  lucide.createIcons();
+  if (btnText) btnText.textContent = 'Отправлено!';
+  if (btnIcon) {
+    btnIcon.setAttribute('data-lucide', 'check');
+    btnIcon.classList.remove('animate-spin');
+    lucide.createIcons();
+  }
   
   // Очищаем форму
   form.reset();
@@ -790,10 +802,12 @@ function showFormSuccess(form, btnText, btnIcon, originalText) {
 
 function showFormError(btnText, btnIcon, originalText, errorMessage = '') {
   // Показываем ошибку
-  btnText.textContent = 'Ошибка';
-  btnIcon.setAttribute('data-lucide', 'x');
-  btnIcon.classList.remove('animate-spin');
-  lucide.createIcons();
+  if (btnText) btnText.textContent = 'Ошибка';
+  if (btnIcon) {
+    btnIcon.setAttribute('data-lucide', 'x');
+    btnIcon.classList.remove('animate-spin');
+    lucide.createIcons();
+  }
   
   // Логируем подробную ошибку
   console.log('😞 Ошибка отправки:', errorMessage || 'Неизвестная ошибка');
