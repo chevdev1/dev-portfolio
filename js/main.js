@@ -720,14 +720,19 @@ async function handleFormspreeSubmit(event) {
   submitBtn.disabled = true;
   
   try {
-    // Отправляем данные в Formspree
-    const response = await fetch(form.action, {
-      method: 'POST',
-      body: new FormData(form),
-      headers: {
-        'Accept': 'application/json'
-      }
-    });
+    // Отправляем данные в Formspree с таймаутом
+    const response = await Promise.race([
+      fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: {
+          'Accept': 'application/json'
+        }
+      }),
+      new Promise((_, reject) => 
+        setTimeout(() => reject(new Error('Timeout')), 10000) // 10 секунд таймаут
+      )
+    ]);
     
     if (response.ok) {
       // Успех! 🎉
