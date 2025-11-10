@@ -57,17 +57,17 @@ function initializeIcons() {
  * Находит форму и добавляет обработчик отправки
  */
 function setupContactForm() {
-  const form = document.querySelector('#brief form');
+  const form = document.querySelector('#contact-form');
   
   if (!form) {
     console.error('❌ Форма заявки не найдена');
     return;
   }
   
-  console.log('✅ Форма заявки найдена, добавляем обработчик');
+  console.log('✅ Форма заявки найдена, добавляем Formspree обработчик');
   
   // Добавляем обработчик события отправки формы
-  form.addEventListener('submit', handleFormSubmit);
+  form.addEventListener('submit', handleFormspreeSubmit);
 }
 
 /**
@@ -694,4 +694,85 @@ function setupReviewsAnimations() {
   });
   
   console.log(`✨ Инициализированы анимации для ${reviewCards.length} отзывов`);
+}
+
+// ================================
+// FORMSPREE ОТПРАВКА ФОРМ
+// ================================
+
+async function handleFormspreeSubmit(event) {
+  event.preventDefault(); // Останавливаем обычную отправку
+  
+  console.log('📧 Отправляем форму через Formspree...');
+  
+  const form = event.target;
+  const submitBtn = form.querySelector('button[type="submit"]');
+  const btnText = submitBtn.querySelector('span');
+  const btnIcon = submitBtn.querySelector('i');
+  
+  // Сохраняем оригинальный текст
+  const originalText = btnText.textContent;
+  
+  // Показываем загрузку
+  btnText.textContent = 'Отправляется...';
+  btnIcon.setAttribute('data-lucide', 'loader-2');
+  btnIcon.classList.add('animate-spin');
+  submitBtn.disabled = true;
+  
+  try {
+    // Отправляем данные в Formspree
+    const response = await fetch(form.action, {
+      method: 'POST',
+      body: new FormData(form),
+      headers: {
+        'Accept': 'application/json'
+      }
+    });
+    
+    if (response.ok) {
+      // Успех! 🎉
+      console.log('✅ Форма успешно отправлена!');
+      showFormSuccess(form, btnText, btnIcon, originalText);
+    } else {
+      throw new Error('Ошибка сервера');
+    }
+    
+  } catch (error) {
+    // Ошибка 😞
+    console.error('❌ Ошибка отправки формы:', error);
+    showFormError(btnText, btnIcon, originalText);
+  }
+  
+  // Возвращаем кнопку в норму через 3 секунды
+  setTimeout(() => {
+    submitBtn.disabled = false;
+    btnText.textContent = originalText;
+    btnIcon.setAttribute('data-lucide', 'send');
+    btnIcon.classList.remove('animate-spin');
+    lucide.createIcons(); // Обновляем иконки
+  }, 3000);
+}
+
+function showFormSuccess(form, btnText, btnIcon, originalText) {
+  // Показываем успех
+  btnText.textContent = 'Отправлено!';
+  btnIcon.setAttribute('data-lucide', 'check');
+  btnIcon.classList.remove('animate-spin');
+  lucide.createIcons();
+  
+  // Очищаем форму
+  form.reset();
+  
+  // Можно добавить уведомление
+  console.log('🎉 Заявка успешно отправлена! Скоро с вами свяжутся.');
+}
+
+function showFormError(btnText, btnIcon, originalText) {
+  // Показываем ошибку
+  btnText.textContent = 'Ошибка';
+  btnIcon.setAttribute('data-lucide', 'x');
+  btnIcon.classList.remove('animate-spin');
+  lucide.createIcons();
+  
+  console.log('😞 Ошибка отправки. Попробуйте еще раз.');
 }
