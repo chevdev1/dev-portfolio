@@ -34,6 +34,9 @@ document.addEventListener('DOMContentLoaded', () => {
   
   // 7. НАСТРОЙКА ПАСХАЛКИ С РАКЕТОЙ
   setupRocketEasterEgg();
+  
+  // 8. АНИМАЦИИ ДЛЯ ОТЗЫВОВ
+  setupReviewsAnimations();
 });
 
 /**
@@ -637,4 +640,58 @@ function setupRocketEasterEgg() {
       hideEasterEgg();
     }
   });
+}
+
+// ================================
+// АНИМАЦИИ ДЛЯ ОТЗЫВОВ
+// ================================
+
+function setupReviewsAnimations() {
+  const reviewCards = document.querySelectorAll('.review-card');
+  
+  if (reviewCards.length === 0) return;
+  
+  // Intersection Observer для анимации появления
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+  });
+  
+  // Применяем начальные стили и наблюдение для каждой карточки
+  reviewCards.forEach((card, index) => {
+    // Начальное состояние
+    card.style.opacity = '0';
+    card.style.transform = 'translateY(30px)';
+    card.style.transition = `all 0.6s ease ${index * 0.1}s`;
+    
+    // Добавляем в наблюдение
+    observer.observe(card);
+    
+    // Добавляем эффект подсветки звезд при наведении
+    const stars = card.querySelectorAll('[data-lucide="star"]');
+    card.addEventListener('mouseenter', () => {
+      stars.forEach((star, starIndex) => {
+        setTimeout(() => {
+          star.style.transform = 'scale(1.1)';
+          star.style.filter = 'brightness(1.2)';
+        }, starIndex * 50);
+      });
+    });
+    
+    card.addEventListener('mouseleave', () => {
+      stars.forEach(star => {
+        star.style.transform = 'scale(1)';
+        star.style.filter = 'brightness(1)';
+      });
+    });
+  });
+  
+  console.log(`✨ Инициализированы анимации для ${reviewCards.length} отзывов`);
 }
