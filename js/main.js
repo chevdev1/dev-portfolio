@@ -720,6 +720,8 @@ async function handleFormspreeSubmit(event) {
   submitBtn.disabled = true;
   
   try {
+    console.log('🚀 Отправляем запрос на:', form.action);
+    
     // Отправляем данные в Formspree с таймаутом
     const response = await Promise.race([
       fetch(form.action, {
@@ -730,27 +732,41 @@ async function handleFormspreeSubmit(event) {
         }
       }),
       new Promise((_, reject) => 
-        setTimeout(() => reject(new Error('Timeout')), 10000) // 10 секунд таймаут
+        setTimeout(() => reject(new Error('Timeout: Превышен лимит ожидания (10 сек)')), 10000)
       )
     ]);
     
+    console.log('📡 Получен ответ:', response.status, response.statusText);
+    
     if (response.ok) {
-      // Успех! 🎉
-      console.log('✅ Форма успешно отправлена!');
+      // Проверяем содержимое ответа
+      const result = await response.json();
+      console.log('✅ Форма успешно отправлена!', result);
       showFormSuccess(form, btnText, btnIcon, originalText);
     } else {
-      throw new Error('Ошибка сервера');
+      // Читаем ошибку от сервера
+      const errorText = await response.text();
+      console.error('❌ Ошибка сервера:', response.status, errorText);
+      throw new Error(`Ошибка сервера: ${response.status}`);
     }
     
   } catch (error) {
     // Ошибка 😞
-    console.error('❌ Ошибка отправки формы:', error);
-    showFormError(btnText, btnIcon, originalText);
+    console.error('❌ Ошибка отправки формы:', error.message);
+    showFormError(btnText, btnIcon, originalText, error.message);
   }
   
-  // Возвращаем кнопку в норму через 3 секунды
+  // Принудительно возвращаем кнопку в норму через 3 секунды
   setTimeout(() => {
     submitBtn.disabled = false;
+    if (btnText.textContent === 'Отправляется...') {
+      // Если кнопка всё ещё в состоянии загрузки - сбрасываем
+      btnText.textContent = originalText;
+      btnIcon.setAttribute('data-lucide', 'send');
+      btnIcon.classList.remove('animate-spin');
+      lucide.createIcons();
+      console.log('⚠️ Принудительно сброшено состояние формы');
+    }
     btnText.textContent = originalText;
     btnIcon.setAttribute('data-lucide', 'send');
     btnIcon.classList.remove('animate-spin');
@@ -772,12 +788,14 @@ function showFormSuccess(form, btnText, btnIcon, originalText) {
   console.log('🎉 Заявка успешно отправлена! Скоро с вами свяжутся.');
 }
 
-function showFormError(btnText, btnIcon, originalText) {
+function showFormError(btnText, btnIcon, originalText, errorMessage = '') {
   // Показываем ошибку
   btnText.textContent = 'Ошибка';
   btnIcon.setAttribute('data-lucide', 'x');
   btnIcon.classList.remove('animate-spin');
   lucide.createIcons();
   
-  console.log('😞 Ошибка отправки. Попробуйте еще раз.');
+  // Логируем подробную ошибку
+  console.log('😞 Ошибка отправки:', errorMessage || 'Неизвестная ошибка');
+  console.log('💡 Попробуйте еще раз через несколько секунд');
 }
