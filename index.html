@@ -477,15 +477,7 @@
             <input type="text" name="name" placeholder="Имя" class="col-span-1 rounded-xl bg-black/40 px-4 py-3 text-sm text-white placeholder-white/40 ring-1 ring-white/10 focus:outline-none focus:ring-2 focus:ring-amber-500/60" required />
             <input type="email" name="email" placeholder="Email" class="col-span-1 rounded-xl bg-black/40 px-4 py-3 text-sm text-white placeholder-white/40 ring-1 ring-white/10 focus:outline-none focus:ring-2 focus:ring-amber-500/60" required />
             <input type="text" name="contact" placeholder="Телеграм (@username) или номер телефона" class="col-span-1 sm:col-span-2 rounded-xl bg-black/40 px-4 py-3 text-sm text-white placeholder-white/40 ring-1 ring-white/10 focus:outline-none focus:ring-2 focus:ring-amber-500/60" required />
-            <select name="budget" class="col-span-1 sm:col-span-2 rounded-xl bg-black/40 px-4 py-3 text-sm text-white ring-1 ring-white/10 focus:outline-none focus:ring-2 focus:ring-amber-500/60" required>
-              <option value="" disabled selected class="text-white/40" data-translate="form-budget">Ваш бюджет на проект</option>
-              <option value="до-50000" class="bg-gray-800 text-white" data-translate="budget-50k">До 50,000 ₽</option>
-              <option value="50000-100000" class="bg-gray-800 text-white" data-translate="budget-50-100k">50,000 - 100,000 ₽</option>
-              <option value="100000-200000" class="bg-gray-800 text-white" data-translate="budget-100-200k">100,000 - 200,000 ₽</option>
-              <option value="200000-500000" class="bg-gray-800 text-white" data-translate="budget-200-500k">200,000 - 500,000 ₽</option>
-              <option value="500000+" class="bg-gray-800 text-white" data-translate="budget-500k+">Свыше 500,000 ₽</option>
-              <option value="обсудим" class="bg-gray-800 text-white" data-translate="budget-discuss">Обсудим индивидуально</option>
-            </select>
+            <input type="text" name="budget" data-translate-placeholder="form-budget" placeholder="Ваш бюджет на проект (например: 100,000 ₽ или 2,000$ или обсудим)" class="col-span-1 sm:col-span-2 rounded-xl bg-black/40 px-4 py-3 text-sm text-white placeholder-white/40 ring-1 ring-white/10 focus:outline-none focus:ring-2 focus:ring-amber-500/60" required />
             <textarea name="task" placeholder="Опишите задачу или вставьте ссылку на ТЗ" rows="3" class="col-span-1 sm:col-span-2 rounded-xl bg-black/40 px-4 py-3 text-sm text-white placeholder-white/40 ring-1 ring-white/10 focus:outline-none focus:ring-2 focus:ring-amber-500/60 resize-none" required></textarea>
             <button type="submit" class="sm:col-span-2 inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-b from-amber-500 to-amber-600 px-5 py-3 text-sm font-medium tracking-tight text-white shadow-[0_10px_30px_rgba(245,158,11,0.45)] hover:brightness-110 transition">
               <span data-translate="form-submit">Отправить бриф</span>
