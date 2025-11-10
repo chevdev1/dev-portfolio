@@ -747,7 +747,7 @@ async function handleFormspreeSubmit(event) {
       // Проверяем содержимое ответа
       const result = await response.json();
       console.log('✅ Форма успешно отправлена!', result);
-      showFormSuccess(form, btnText, btnIcon, originalText);
+      showFormSuccess(form, btnText, null, originalText);
     } else {
       // Читаем ошибку от сервера
       const errorText = await response.text();
@@ -758,7 +758,7 @@ async function handleFormspreeSubmit(event) {
   } catch (error) {
     // Ошибка 😞
     console.error('❌ Ошибка отправки формы:', error.message);
-    showFormError(btnText, btnIcon, originalText, error.message);
+    showFormError(btnText, null, originalText, error.message);
   }
   
   // Принудительно возвращаем кнопку в норму через 3 секунды
